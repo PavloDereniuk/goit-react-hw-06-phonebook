@@ -29,3 +29,9 @@ export const ErrorMessage = styled(FormikError)`
   color: red;
   font-size: 14px;
 `;
+
+export const Container = styled.div`
+  padding: 20px;
+  max-width: 100%;
+  margin-bottom: 24px;
+`;

@@ -1,15 +1,20 @@
-import { FieldWrapper } from './Filter.styled';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const Filter = ({ filters, onUpdateFilter }) => {
+import { updateFilter, getFilter } from '../../redux/filterSlice';
+import { Wrapper, Text, Field } from './Filter.styled';
+
+export const Filter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+
   return (
-    <FieldWrapper>
-      <label htmlFor="filter">Find contacts by name</label>
-      <input
+    <Wrapper>
+      <Text>Find contacts by name</Text>
+      <Field
         type="text"
-        name="filter"
-        value={filters}
-        onChange={e => onUpdateFilter(e.target.value)}
+        value={filter}
+        onChange={evt => dispatch(updateFilter(evt.target.value))}
       />
-    </FieldWrapper>
+    </Wrapper>
   );
 };
